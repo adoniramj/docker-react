@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services: 
+  - docker
+
+before_install: 
+  - docker build -t adoniramj/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true adoniramj/docker-react npm run test
